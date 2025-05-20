@@ -1,0 +1,15 @@
+<h1>Register</h1>
+<form method="POST">
+    {{ form.hidden_tag() }} 
+    <input name="username" placeholder="Username" required><br>
+    <input name="password" type="password" placeholder="Password" required><br>
+    <button type="submit">Register</button>
+</form>
+<p>Already have an account? <a href="/login">Login here</a></p>
+<a href="/">Back to Home</a>
+{% if error %}
+    <p style="color: red;">{{ error }}</p>
+{% endif %}
+{% if success %}
+    <p style="color: green;">{{ success }}</p>
+{% endif %}

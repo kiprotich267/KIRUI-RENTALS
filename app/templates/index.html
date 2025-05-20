@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+  
+
+    .footer {
+        position: sticky;
+        bottom: 0;
+        width: 100%;
+        background-color: #343a40;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        margin-top: auto;
+    }
+
+    .carousel-item img {
+        height: 100vh;
+        object-fit: cover;
+    }
+
+    .carousel-fade .carousel-item {
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+
+    .carousel-fade .carousel-item.active {
+        opacity: 1;
+    }
+</style>
+<div class="container mt-5">
+    <h1 class="text-center mb-4">🏡WELCOME TO KIRUI RENTALS</h1>
+
+    {% if username %}
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <p class="mb-0">
+            Welcome, <strong>{{ username }}</strong> | 
+            <a class="text-decoration-none text-danger" href="{{ url_for('main.logout') }}">Logout</a>
+        </p>
+        <a class="btn btn-success btn-lg shadow-sm animate__animated animate__fadeInRight" href="{{ url_for('main.add_house') }}">+ Add New Listing</a>
+    </div>
+    {% else %}
+    <div class="text-center mb-3">
+        <a class="btn btn-outline-primary btn-lg me-2 shadow-sm animate__animated animate__fadeInLeft" href="{{ url_for('main.login') }}">Login</a>
+        <a class="btn btn-outline-secondary btn-lg shadow-sm animate__animated animate__fadeInRight" href="{{ url_for('main.register') }}">Register</a>
+    </div>
+    {% endif %}
+</div>
+<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://via.placeholder.com/1920x1080" class="d-block w-100" alt="image here">
+        </div>
+        <div class="carousel-item">
+            <img src="https://via.placeholder.com/1920x1080" class="d-block w-100" alt="image here">
+        </div>
+        <div class="carousel-item">
+            <img src="https://via.placeholder.com/1920x1080" class="d-block w-100" alt="image here">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+
+
+<div class="footer">
+    <p>&copy; 2025 Kirui Rentals. All rights reserved.</p>
+</div>
+
+{% endblock %}
